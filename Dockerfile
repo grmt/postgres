@@ -11,6 +11,7 @@ RUN apt update && \
     ansible-playbook playbook-docker.yml && \
     apt -y update && \
     apt -y upgrade && \
+    apt -y remove libaom0 && \
     apt -y autoremove && \
     apt -y autoclean && \
 #    apt install -y default-jdk-headless && \
