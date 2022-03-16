@@ -13,7 +13,7 @@ RUN apt update && \
     apt -y upgrade && \
     apt -y autoremove && \
     apt -y autoclean && \
-    apt install -y default-jdk-headless && \
+#    apt install -y default-jdk-headless && \
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 
 ENV LANGUAGE=en_US.UTF-8

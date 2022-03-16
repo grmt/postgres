@@ -25,17 +25,17 @@
 - name: Install pg-safeupdate
   import_tasks: tasks/postgres-extensions/09-pg-safeupdate.yml
 
-# - name: Install timescaledb
-#   import_tasks: tasks/postgres-extensions/10-timescaledb.yml
+- name: Install timescaledb
+  import_tasks: tasks/postgres-extensions/10-timescaledb.yml
 
 - name: Install wal2json
   import_tasks: tasks/postgres-extensions/11-wal2json.yml
 
-- name: Install pljava
-  import_tasks: tasks/postgres-extensions/12-pljava.yml
+# - name: Install pljava
+#   import_tasks: tasks/postgres-extensions/12-pljava.yml
 
-- name: Install plv8
-  import_tasks: tasks/postgres-extensions/13-plv8.yml
+# - name: Install plv8
+#   import_tasks: tasks/postgres-extensions/13-plv8.yml
 
 - name: Install pg_plan_filter
   import_tasks: tasks/postgres-extensions/14-pg_plan_filter.yml
