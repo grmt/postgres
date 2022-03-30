@@ -9,17 +9,36 @@
 
   vars:
     sql_files:
+      - { source: "pgbouncer_config/pgbouncer_auth_schema.sql", dest: "00-schema.sql" }
       - { source: "stat_extension.sql", dest: "01-extension.sql" }
 
   environment:
     PATH: /usr/lib/postgresql/bin:{{ ansible_env.PATH }}
 
   tasks:
+    - set_fact:
+        supabase_internal: true
+      tags:
+        - install-supabase-internal
+
+    - set_fact:
+        parallel_jobs: 16
+
     - name: Install Postgres from source
       import_tasks: tasks/setup-postgres.yml
 
     - name: Install Postgres extensions
       import_tasks: tasks/setup-extensions.yml
+
+    - name: Install PgBouncer
+      import_tasks: tasks/setup-pgbouncer.yml
+      tags:
+        - install-pgbouncer
+
+    - name: Install Supabase specific content
+      import_tasks: tasks/setup-supabase-internal.yml
+      tags:
+        - install-supabase-internal
 
     - name: Start Postgres Database
       systemd:
@@ -48,20 +67,10 @@
     - name: Install WAL-G
       import_tasks: tasks/setup-wal-g.yml
 
-    - name: Install PgBouncer
-      import_tasks: tasks/setup-pgbouncer.yml
-      tags:
-        - install-pgbouncer
-
     - name: Install PostgREST
       import_tasks: tasks/setup-postgrest.yml
       tags:
         - install-postgrest
-        
-    - name: Install Supabase specific content
-      import_tasks: tasks/setup-supabase-internal.yml
-      tags:
-        - install-supabase-internal
 
     - name: Clean out build dependencies
       import_tasks: tasks/clean-build-dependencies.yml
@@ -117,6 +126,11 @@
             systemctl reenable logrotate.timer
       become: yes
 
+    - name: First boot optimizations
+      import_tasks: tasks/internal/optimizations.yml
+      tags:
+        - install-supabase-internal
+
     - name: Enhance fail2ban
       import_tasks: tasks/setup-fail2ban.yml
 
@@ -147,9 +161,5 @@
 
     - name: Create symbolic links for Postgres binaries to /usr/bin/
       become: yes
-      file:
-        src: "{{ item.path }}"
-        path: "/usr/bin/{{ item.path | basename }}"
-        state: link
-        force: yes
-      with_items: "{{ postgresql_bin.files }}"
+      shell:
+        cmd: "for fl in /usr/lib/postgresql/bin/* ; do ln -sf $fl /usr/bin/$(basename $fl) ; done"
