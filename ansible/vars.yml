@@ -1,4 +1,5 @@
 supabase_internal: true
+ebssurrogate_mode: true
 
 postgresql_major: "14"
 postgresql_release: "14.2"
@@ -19,7 +20,7 @@ golang_version_checksum:
   arm64: sha256:06f505c8d27203f78706ad04e47050b49092f1b06dc9ac4fbee4f0e4d015c8d4
   amd64: sha256:550f9845451c0c94be679faf116291e7807a8d78b43149f9506c1b15eb89008c
 
-wal_g_release: "v1.1-backports"
+wal_g_release: "v1.1"
 
 sfcgal_release: "1.3.10"
 sfcgal_release_checksum: sha1:f4add34a00afb0b5f594685fc646565a2bda259b
@@ -34,10 +35,10 @@ node_exporter_release_checksum:
   arm64: sha256:eb5e7d16f18bb3272d0d832986fc8ac6cb0b6c42d487c94e15dabb10feae8e04
   amd64: sha256:8c1f6a317457a658e0ae68ad710f6b4098db2cad10204649b51e3c043aa3e70d
 
-adminapi_release: 0.19.0
+adminapi_release: 0.23.1
 adminapi_release_checksum:
-  arm64: sha256:1569882ae70f99c14931ad00013bc754e566b61e3c6df75210f8f48e2ad08cc7
-  amd64: sha256:6e41a56e060ba53fca038794eaa6b6f131ae3828b6877ea2792c69f321467d4f
+  arm64: sha256:269a509b95413a19bf5a426f275f88376cd7d278b12db4039de8b3785bb93ef9
+  amd64: sha256:53aba533b6309e271d9407d159a0fbb720b385caa838dc7dd284c81c2635aac3
 
 # Postgres Extensions
 postgis_release: "3.1.4"
@@ -46,8 +47,8 @@ postgis_release_checksum: sha1:3077da5136841d9d51a4325a233be8eccf763c38
 pgrouting_release: "3.3.0"
 pgrouting_release_checksum: sha1:7475189f334bc97e1b3587b2f456a573c8aa811a
 
-pgtap_release: "1.1.0"
-pgtap_release_checksum: sha1:cca57708e723de18735a723b774577dc52f6f31e
+pgtap_release: "1.2.0"
+pgtap_release_checksum: sha256:9c7c3de67ea41638e14f06da5da57bac6f5bd03fea05c165a0ec862205a5c052
 
 pg_cron_release: "1.4.1"
 pg_cron_release_checksum: sha1:411cb25b64a3aefc26e9b0c9d9de205cbeefe631
@@ -64,13 +65,12 @@ plpgsql_check_release_checksum: sha1:3f3ca49e38ee87392fd62f1a62a481c445e1c6c2
 pg_safeupdate_release: "1.4"
 pg_safeupdate_release_checksum: sha1:942dacd0ebce6123944212ffb3d6b5a0c09174f9
 
-timescaledb_release: "2.6.0"
+timescaledb_release: "2.7.0"
 
-wal2json_release: "2_4"
-wal2json_release_checksum: sha1:9f5c8dec3c0a5c19b1b77273f67fd9b0b0ab6664
+wal2json_commit_sha: 53b548a29ebd6119323b6eb2f6013d7c5fe807ec
 
-supautils_release: "1.2.0"
-supautils_release_checksum: sha1:7a86d7068905e41cc6b1eab71a0095845de15a75
+supautils_release: "1.3.1"
+supautils_release_checksum: sha1:54d96cf1f96d2a16d1f9d8a8ac6fd632bd402154
 
 pljava_release: "1_6_3"
 pljava_release_checksum: sha1:550bea791c404c9d62050fd9c330e162bab20763
@@ -94,9 +94,8 @@ libsodium_release_checksum: sha1:795b73e3f92a362fabee238a71735579bf46bb97
 pgsodium_release: "2.0.2"
 pgsodium_release_checksum: sha1:24d3348c09d9945f5a27762af41bf8203f82ad8a
 
-libgraphqlparser_release: "v0.7.0"
+libgraphqlparser_commit_sha: 3b64cd52d13621921990a5801ba019e8a9402599
 
-pg_graphql_release: "v0.1.5"
+pg_graphql_release: "v0.3.2"
 
-osquery_deb: 'https://pkg.osquery.io/deb/osquery_5.1.0-1.linux_arm64.deb'
-osquery_deb_checksum: sha1:6b6fa49edcfad5d77aa1e59c75b8708de2f634ac
+pg_stat_monitor_release: "1.0.1"

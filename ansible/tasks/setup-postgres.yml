@@ -11,6 +11,7 @@
       - libxslt-dev
       - libssl-dev
       - libsystemd-dev
+      - libpq-dev
       - libxml2-utils
       - uuid-dev
       - xsltproc
@@ -31,6 +32,15 @@
 - name: Switch to GCC 10
   shell:
     cmd: update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 --slave /usr/bin/g++ g++ /usr/bin/g++-10 --slave /usr/bin/gcov gcov /usr/bin/gcov-10
+
+# Setup permissions
+- name: Update permissions for /var/tmp directory
+  file:
+    path: /var/tmp/
+    owner: root
+    group: root
+    mode: '1777'
+  become: yes
 
 # Building Postgres from source
 - name: Postgres - download latest release
@@ -71,13 +81,19 @@
     target: install-world-bin
     chdir: /tmp/postgresql-{{ postgresql_release }}
 
+- name: Create postgres group
+  group:
+    name: postgres
+    state: present
+
 # Create postgres user
 - name: Create postgres user
   user:
     name: postgres
     shell: /bin/false
     comment: Postgres user
-    groups: ssl-cert
+    group: postgres
+    groups: postgres,ssl-cert
 
 - name: Create relevant directories
   file:
@@ -136,12 +152,26 @@
     dest: /etc/postgresql/pg_ident.conf
     group: postgres
 
+- name: Find all files in /usr/lib/postgresql/bin
+  find:
+    paths: /usr/lib/postgresql/bin
+  register: postgresql_bin
+
+- name: Create symbolic links for Postgres binaries to /usr/bin/
+  become: yes
+  file:
+    src: "{{ item.path }}"
+    path: "/usr/bin/{{ item.path | basename }}"
+    state: link
+    force: yes
+  with_items: "{{ postgresql_bin.files }}"
+
 # init DB
 - name: Initialize the database
   become: yes
   become_user: postgres
   shell:
-    cmd: /usr/lib/postgresql/bin/pg_ctl -D /var/lib/postgresql/data initdb
+    cmd: /usr/lib/postgresql/bin/pg_ctl -D /var/lib/postgresql/data initdb -o "--allow-group-access"
   vars:
     ansible_command_timeout: 60
     # Circumvents the following error:
