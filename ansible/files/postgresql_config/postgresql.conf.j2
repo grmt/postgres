@@ -719,7 +719,8 @@ default_text_search_config = 'pg_catalog.english'
 
 #local_preload_libraries = ''
 #session_preload_libraries = ''
-shared_preload_libraries = 'pg_stat_statements, pgaudit, plpgsql, plpgsql_check, pg_cron, pg_net, pgsodium'	# (change requires restart)
+
+shared_preload_libraries = 'pg_stat_statements, pg_stat_monitor, pgaudit, plpgsql, plpgsql_check, pg_cron, pg_net, pgsodium, timescaledb'	# (change requires restart)
 jit_provider = 'llvmjit'		# JIT library to use
 
 # - Other Defaults -
@@ -787,6 +788,16 @@ pgsodium.getkey_script= '{{ pg_bindir }}/pgsodium_getkey_urandom.sh'
 #include_if_exists = '...'		# include file only if it exists
 #include = '...'			# include file
 
+# Automatically generated optimizations
+#include = '/etc/postgresql-custom/generated-optimizations.conf'
+# User-supplied custom parameters, override any automatically generated ones
+#include = '/etc/postgresql-custom/custom-overrides.conf'
+
+# WAL-G specific configurations
+#include = '/etc/postgresql-custom/wal-g.conf'
+
+# supautils specific configurations
+#include = '/etc/postgresql-custom/supautils.conf'
 
 #------------------------------------------------------------------------------
 # CUSTOMIZED OPTIONS
