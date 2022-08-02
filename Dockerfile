@@ -10,13 +10,14 @@ RUN apt update && \
     ansible-playbook playbook-docker.yml && \
     apt -y update && \
     apt -y upgrade && \
+    apt -y remove libaom0 && \
     apt -y autoremove && \
     apt -y autoclean && \
-    apt install -y default-jdk-headless locales && \
+#    apt install -y default-jdk-headless && \
+    apt install -y locales && \
     sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && \
     locale-gen && \
-    rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/* 
-
+    rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 ENV LANGUAGE en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8

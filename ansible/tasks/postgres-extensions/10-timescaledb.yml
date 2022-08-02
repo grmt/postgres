@@ -29,3 +29,10 @@
     chdir: /tmp/timescaledb/build
     target: install
   become: yes
+
+- name: timescaledb - add timescaledb to shared_preload_libraries
+  become: yes
+  replace:
+    path: /etc/postgresql/postgresql.conf
+    regexp: 'shared_preload_libraries = ''(.*)''(.*)'
+    replace: 'shared_preload_libraries = ''\1, timescaledb''\2'

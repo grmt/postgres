@@ -2,7 +2,7 @@ supabase_internal: true
 ebssurrogate_mode: true
 
 postgresql_major: "14"
-postgresql_release: "14.1"
+postgresql_release: "14.2"
 postgresql_release_checksum: sha1:f6c114a4be41ca876deeb462e9d02237b186743c
 
 # Non Postgres Extensions
@@ -65,7 +65,7 @@ plpgsql_check_release_checksum: sha1:3f3ca49e38ee87392fd62f1a62a481c445e1c6c2
 pg_safeupdate_release: "1.4"
 pg_safeupdate_release_checksum: sha1:942dacd0ebce6123944212ffb3d6b5a0c09174f9
 
-timescaledb_release: "2.6.1"
+timescaledb_release: "2.7.0"
 
 wal2json_commit_sha: 53b548a29ebd6119323b6eb2f6013d7c5fe807ec
 
@@ -75,7 +75,7 @@ supautils_release_checksum: sha1:54d96cf1f96d2a16d1f9d8a8ac6fd632bd402154
 pljava_release: "1_6_3"
 pljava_release_checksum: sha1:550bea791c404c9d62050fd9c330e162bab20763
 
-plv8_commit_version: 3656177d384e3e02b74faa8e2931600f3690ab59
+plv8_commit_version: d976dbbfba89df382264a5a3680cccabd830ddff
 
 pg_plan_filter_commit_version: 5081a7b5cb890876e67d8e7486b6a64c38c9a492
 
@@ -91,8 +91,8 @@ vector_arm_deb: 'https://packages.timber.io/vector/0.22.3/vector_0.22.3-1_arm64.
 libsodium_release: "1.0.18"
 libsodium_release_checksum: sha1:795b73e3f92a362fabee238a71735579bf46bb97
 
-pgsodium_release: "2.0.1"
-pgsodium_release_checksum: sha1:b6ef733c9bbae590c1eee676fd0a97fd129893e0
+pgsodium_release: "2.0.2"
+pgsodium_release_checksum: sha1:24d3348c09d9945f5a27762af41bf8203f82ad8a
 
 libgraphqlparser_commit_sha: 3b64cd52d13621921990a5801ba019e8a9402599
 
