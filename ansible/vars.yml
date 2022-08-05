@@ -2,7 +2,7 @@ supabase_internal: true
 ebssurrogate_mode: true
 
 postgresql_major: "14"
-postgresql_release: "14.2"
+postgresql_release: "14.4"
 postgresql_release_checksum: sha1:f6c114a4be41ca876deeb462e9d02237b186743c
 
 # Non Postgres Extensions
@@ -75,7 +75,7 @@ plpgsql_check_release_checksum: sha1:3f3ca49e38ee87392fd62f1a62a481c445e1c6c2
 pg_safeupdate_release: "1.4"
 pg_safeupdate_release_checksum: sha1:942dacd0ebce6123944212ffb3d6b5a0c09174f9
 
-timescaledb_release: "2.7.0"
+timescaledb_release: "2.7.2"
 
 wal2json_commit_sha: 53b548a29ebd6119323b6eb2f6013d7c5fe807ec
 
