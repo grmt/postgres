@@ -4,12 +4,13 @@ FROM postgres:$VERSION
 
 COPY ansible/ /tmp/ansible/
 
+ENV DEBIAN_FRONTEND noninteractive
+
 RUN apt update && \
-    apt install -y ansible && \
+    apt install -y ansible sudo git && \
+    apt -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" upgrade && \
     cd /tmp/ansible && \
     ansible-playbook playbook-docker.yml && \
-    apt -y update && \
-    apt -y upgrade && \
     apt -y remove libaom0 && \
     apt -y autoremove && \
     apt -y autoclean && \

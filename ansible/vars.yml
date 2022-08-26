@@ -23,9 +23,9 @@ golang_version_checksum:
   arm64: sha256:beacbe1441bee4d7978b900136d1d6a71d150f0a9bb77e9d50c822065623a35a
   amd64: sha256:956f8507b302ab0bb747613695cdae10af99bbd39a90cae522b7c0302cc27245
 
-kong_release_target: xenial # if it works, it works
+kong_release_target: focal # if it works, it works
 kong_deb: kong_2.8.1_arm64.deb
-kong_deb_checksum: sha1:e61882d652d1f41bc3b7d179163b8a7abfe41d94
+kong_deb_checksum: sha1:2086f6ccf8454fe64435252fea4d29d736d7ec61
 
 nginx_release: 1.22.0
 nginx_release_checksum: sha1:419efb77b80f165666e2ee406ad8ae9b845aba93
@@ -45,10 +45,10 @@ node_exporter_release_checksum:
   arm64: sha256:eb5e7d16f18bb3272d0d832986fc8ac6cb0b6c42d487c94e15dabb10feae8e04
   amd64: sha256:8c1f6a317457a658e0ae68ad710f6b4098db2cad10204649b51e3c043aa3e70d
 
-adminapi_release: 0.25.0
+adminapi_release: 0.26.2
 adminapi_release_checksum:
-  arm64: sha256:cf991260c21481d0a1e62634ae7e8a0cc6fd314287e1463ed76afa5a2987f3e0
-  amd64: sha256:57179aedc0c6204a971fc02db04317a76be101fe6c2fa2488a531c69ce06a685
+  arm64: sha256:940ee8268782ad23763cd0e8f3d36b56140c6924d663f1207b63df1fe821dfec
+  amd64: sha256:e11db37651b8c7b34b94665931f94d5eec3b32996134e9a60ac48bf9499ec68f
 
 # Postgres Extensions
 postgis_release: "3.1.4"
@@ -101,8 +101,8 @@ vector_arm_deb: 'https://packages.timber.io/vector/0.22.3/vector_0.22.3-1_arm64.
 libsodium_release: "1.0.18"
 libsodium_release_checksum: sha1:795b73e3f92a362fabee238a71735579bf46bb97
 
-pgsodium_release: "3.0.2"
-pgsodium_release_checksum: sha1:8406d6546fe75780ab4e746a592a300f5c1ff3cf
+pgsodium_release: "3.0.4"
+pgsodium_release_checksum: sha1:f08e9ac109ab5e6fc8b15ea21b26f88f451a2070
 
 libgraphqlparser_commit_sha: 3b64cd52d13621921990a5801ba019e8a9402599
 
@@ -112,3 +112,7 @@ pgx_version: "0.4.5"
 pg_jsonschema_release: "v0.1.0"
 
 pg_stat_monitor_release: "1.0.1"
+
+vault_release: "0.0.1"
+vault_release_checksum: sha1:a5ea3356c6f41985b2bef67b6a0491d4ffa99816
+
