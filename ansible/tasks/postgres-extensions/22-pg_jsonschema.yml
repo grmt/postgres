@@ -57,6 +57,19 @@
     cmd: "~/.cargo/bin/cargo pgx install --release"
     chdir: /tmp/pg_jsonschema
 
+- name: pgx_json_schema - download
+  become: yes
+  git:
+    repo: https://github.com/jefbarn/pgx_json_schema.git
+    dest: /tmp/pg_jsonschema
+
+- name: pgx_json_schema - install
+  become: yes
+  become_user: postgres
+  shell:
+    cmd: "~/.cargo/bin/cargo pgx install --release"
+    chdir: /tmp/pg_jsonschema
+
 - name: pg_jsonschema - return ownership to root
   file:
     path: '{{ item }}'

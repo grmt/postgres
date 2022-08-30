@@ -11,14 +11,13 @@ RUN apt update && \
     apt -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" upgrade && \
     cd /tmp/ansible && \
     ansible-playbook playbook-docker.yml && \
-    apt -y remove libaom0 && \
     apt -y autoremove && \
     apt -y autoclean && \
 #    apt install -y default-jdk-headless && \
     apt install -y locales && \
     sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && \
     locale-gen && \
-    rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
+    rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/ /var/lib/postgresql/.rustup /var/lib/postgresql/.cargo* /var/lib/postgresql/.profile
 
 ENV LANGUAGE en_US.UTF-8
 ENV LANG en_US.UTF-8
