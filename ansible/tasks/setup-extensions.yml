@@ -1,8 +1,8 @@
-- name: Install postgis
-  import_tasks: tasks/postgres-extensions/01-postgis.yml
+# - name: Install postgis
+#   import_tasks: tasks/postgres-extensions/01-postgis.yml
 
-- name: Install pgrouting
-  import_tasks: tasks/postgres-extensions/02-pgrouting.yml
+# - name: Install pgrouting
+#   import_tasks: tasks/postgres-extensions/02-pgrouting.yml
 
 - name: Install pgtap
   import_tasks: tasks/postgres-extensions/03-pgtap.yml

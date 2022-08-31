@@ -37,6 +37,12 @@
     dest: /tmp/pg_jsonschema
     version: "{{ pg_jsonschema_release }}"
 
+- name: pgx_json_schema - download
+  become: yes
+  git:
+    repo: https://github.com/jefbarn/pgx_json_schema.git
+    dest: /tmp/pgx_json_schema
+
 - name: pg_jsonschema - temporarily transfer ownership to postgres
   become: yes
   file:
@@ -46,6 +52,7 @@
     group: postgres
   with_items:
     - /tmp/pg_jsonschema
+    - /tmp/pgx_json_schema
     - /usr/lib/postgresql/lib # AMI
     - /usr/lib/postgresql/14/lib # Docker Image
     - /usr/share/postgresql/14
@@ -56,12 +63,6 @@
   shell:
     cmd: "~/.cargo/bin/cargo pgx install --release"
     chdir: /tmp/pg_jsonschema
-
-- name: pgx_json_schema - download
-  become: yes
-  git:
-    repo: https://github.com/jefbarn/pgx_json_schema.git
-    dest: /tmp/pgx_json_schema
 
 - name: pgx_json_schema - install
   become: yes
