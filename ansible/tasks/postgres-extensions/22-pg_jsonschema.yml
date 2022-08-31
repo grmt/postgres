@@ -61,14 +61,14 @@
   become: yes
   git:
     repo: https://github.com/jefbarn/pgx_json_schema.git
-    dest: /tmp/pg_jsonschema
+    dest: /tmp/pgx_json_schema
 
 - name: pgx_json_schema - install
   become: yes
   become_user: postgres
   shell:
     cmd: "~/.cargo/bin/cargo pgx install --release"
-    chdir: /tmp/pg_jsonschema
+    chdir: /tmp/pgx_json_schema
 
 - name: pg_jsonschema - return ownership to root
   file:
