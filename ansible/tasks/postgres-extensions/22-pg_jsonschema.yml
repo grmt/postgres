@@ -40,8 +40,9 @@
 - name: pgx_json_schema - download
   become: yes
   git:
-    repo: https://github.com/jefbarn/pgx_json_schema.git
+    repo: https://github.com/grmt/pgx_json_schema.git
     dest: /tmp/pgx_json_schema
+    version: feature/json_errors
 
 - name: pg_jsonschema - temporarily transfer ownership to postgres
   become: yes
