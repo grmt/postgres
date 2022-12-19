@@ -3,3 +3,4 @@
 venv/
 *.swp
 build_docker.log
+docker/cache/
