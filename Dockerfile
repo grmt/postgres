@@ -25,7 +25,7 @@ RUN --mount=type=bind,source=docker/cache,target=/ccache,rw \
     apt install -y locales && \
     sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && \
     locale-gen && \
-    rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/* /ccache 
+    rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/* /ccache \
     rm -rf /var/lib/postgresql/.rustup /var/lib/postgresql/.cargo* /var/lib/postgresql/.profile
 
 ENV LANGUAGE en_US.UTF-8
