@@ -68,7 +68,7 @@ plpgsql_check_release_checksum: sha256:6c3a3c5faf3f9689425c6db8a6b20bf4cd5e7144a
 pg_safeupdate_release: "1.4"
 pg_safeupdate_release_checksum: sha1:942dacd0ebce6123944212ffb3d6b5a0c09174f9
 
-timescaledb_release: "2.9.1" #TODO: update version after pg15 support is rolled out: https://github.com/timescale/timescaledb/pulls?q=is%3Apr+label%3Apg15+is%3Aclosed
+timescaledb_release: "2.9.1"
 
 wal2json_commit_sha: 770872b890f9e122290f178e7c7bfa19ec7afa94
 
@@ -100,7 +100,7 @@ pgsodium_release_checksum: sha256:bec847388a5db2a60ea9d991962ce27954d91b4c41cbcc
 pg_graphql_release: "v1.0.2"
 
 pg_jsonschema_release: "v0.1.4"
-pg_jsonschema_pgx_version: "0.6.1"
+pg_jsonschema_pgx_version: "0.6.0-alpha.1"
 
 pg_stat_monitor_release: "1.1.1"
 
@@ -114,3 +114,5 @@ pgroonga_release: "2.4.0"
 pgroonga_release_checksum: sha1:235d67e8487b318e656d4d3016a49c14fae0512d
 
 wrappers_release: "v0.1.7"
+
+hypopg_commit_sha: 57d711bc4e37164c8edac81580a5f477e2a33d86

@@ -15,7 +15,7 @@
 
 - name: timescaledb - bootstrap
   shell:
-    cmd: "./bootstrap -DAPACHE_ONLY=1 -DEXPERIMENTAL=ON" #TODO: remove this after official support is rolled out: https://github.com/timescale/timescaledb/pulls?q=is%3Apr+label%3Apg15+is%3Aclosed
+    cmd: "./bootstrap -DAPACHE_ONLY=1"
     chdir: /tmp/timescaledb
   become: yes
 
@@ -36,3 +36,8 @@
     path: /etc/postgresql/postgresql.conf
     regexp: 'shared_preload_libraries = ''(.*)''(.*)'
     replace: 'shared_preload_libraries = ''\1, timescaledb''\2'
+
+- name: timescaledb - cleanup
+  file:
+    state: absent
+    path: /tmp/timescaledb
