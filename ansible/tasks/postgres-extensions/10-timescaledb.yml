@@ -15,7 +15,7 @@
 
 - name: timescaledb - bootstrap
   shell:
-    cmd: "./bootstrap -DAPACHE_ONLY=1"
+    cmd: "./bootstrap"
     chdir: /tmp/timescaledb
   become: yes
 
